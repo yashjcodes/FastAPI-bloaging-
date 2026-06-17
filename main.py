@@ -1,6 +1,11 @@
-from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
-post :list[dict] = [
+from fastapi import FastAPI, Request
+#from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
+
+
+
+posts :list[dict] = [
        {
         "id": 1,
         "author": "John Doe",
@@ -20,11 +25,14 @@ post :list[dict] = [
 
 app = FastAPI()
 
-@app.get("/", response_class=HTMLResponse ,include_in_schema=False)
-@app.get("/post", response_class=HTMLResponse ,include_in_schema=False)
+app.mount("/static",StaticFiles(directory="static"),name="static")
 
-def home():
-    return f"<h1>{post[0]['title']}</h1>"
+templates = Jinja2Templates(directory="templates")
+
+
+@app.get("/",include_in_schema=False ) #it will hide it from documantation
+def home(request : Request):
+    return templates.TemplateResponse(request, "home.html" , {"posts":posts})
 
 @app.get("/ni")
 def holi():
@@ -33,4 +41,4 @@ def holi():
 
 @app.get("/api/post")
 def get_posts():
-    return post
+    return posts

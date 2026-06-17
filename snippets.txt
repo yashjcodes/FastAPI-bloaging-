@@ -14,3 +14,10 @@ post :list[dist] = [
         "date_posted": "2026-06-11"
     },
 ]
+
+## commands to push to github
+git add .
+git commit -m "Describe your changes"
+git push
+
+##Templetes 
