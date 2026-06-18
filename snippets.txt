@@ -1,4 +1,4 @@
-post :list[dist] = [
+posts :list[dist] = [
        {
         "id": 1,
         "author": "John Doe",
@@ -21,3 +21,7 @@ git commit -m "Describe your changes"
 git push
 
 ##Templetes 
+##Jinjar2 
+##url_for()
+##mount()
+##post.get()
