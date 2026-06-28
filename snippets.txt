@@ -27,3 +27,7 @@ git push
 ##post.get()
 ##app.poatch()->exclude_unset = true
 ##app.delete()->cascade
+##async functions 
+## in sync lazyloading supports but in async it doesn't supports
+##eager loading
+##routes are relative, prefixs used in routing
